@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Wybierz operację (1-3):");
+        System.out.println("Wybierz (1-3):");
         System.out.println("1. a/b * c");
         System.out.println("2. Sprawdź czy trójkąt ABC jest prostokątny");
         System.out.println("3. (√c + √(1/b)) * c²");
@@ -23,20 +23,20 @@ public class Main {
                 if (b == 0) {
                     System.out.println("Nie można dzielić przez zero!");
                 } else {
-                    double result = (a/b) * c;
-                    System.out.println("Wynik: " + result);
+                    double wynik = (a/b) * c;
+                    System.out.println("Wynik: " + wynik);
                 }
                 break;
                 
             case 2:
                 System.out.println("Podaj bok a:");
-                double side1 = scanner.nextDouble();
+                double bok1 = scanner.nextDouble();
                 System.out.println("Podaj bok b:");
-                double side2 = scanner.nextDouble();
+                double bok2 = scanner.nextDouble();
                 System.out.println("Podaj bok c:");
-                double side3 = scanner.nextDouble();
+                double bok3 = scanner.nextDouble();
                 
-                boolean isPythagorean = checkPythagorean(side1, side2, side3);
+                boolean isPythagorean = checkPythagorean(bok1, bok2, bok3);
                 System.out.println(isPythagorean ? 
                     "Trójkąt jest prostokątny" : 
                     "Trójkąt nie jest prostokątny");
@@ -44,17 +44,17 @@ public class Main {
                 
             case 3:
                 System.out.println("Podaj b:");
-                double bVal = scanner.nextDouble();
+                double bwartosc = scanner.nextDouble();
                 System.out.println("Podaj c:");
-                double cVal = scanner.nextDouble();
+                double cwartosc = scanner.nextDouble();
                 
-                if (bVal == 0) {
+                if (bwartosc == 0) {
                     System.out.println("Nie można dzielić przez zero!");
-                } else if (cVal < 0 || (1/bVal) < 0) {
+                } else if (cwartosc < 0 || (1/bwartosc) < 0) {
                     System.out.println("Nie można pierwiastkować liczby ujemnej!");
                 } else {
-                    double result = (Math.sqrt(cVal) + Math.sqrt(1/bVal)) * (cVal * cVal);
-                    System.out.println("Wynik: " + result);
+                    double wynik = (Math.sqrt(cwartosc) + Math.sqrt(1/bwartosc)) * (cwartosc * cwartosc);
+                    System.out.println("Wynik: " + wynik);
                 }
                 break;
                 
@@ -66,12 +66,13 @@ public class Main {
     }
     
     private static boolean checkPythagorean(double a, double b, double c) {
-        // Sortujemy boki, aby największy był c
-        double[] sides = {a, b, c};
-        java.util.Arrays.sort(sides);
         
-        // Sprawdzamy twierdzenie Pitagorasa
-        return Math.abs((sides[0] * sides[0] + sides[1] * sides[1]) - 
-                       (sides[2] * sides[2])) < 0.0001; // dla dokładności obliczeń
+        double[] boki = {a, b, c};
+        java.util.Arrays.sort(boki);
+        
+        
+        return Math.abs((boki[0] * boki[0] + boki[1] * boki[1]) - 
+                       (boki[2] * boki[2])) < 0.0001; //3
+      
     }
 }
